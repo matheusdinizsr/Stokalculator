@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Stokalculator.MainPage">
+
+    <ScrollView>
+        <HorizontalStackLayout>
+            <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+                <Grid>
+                    <Label
+                Text="Bank"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+                </Grid>
+
+                <Grid>
+                    <Entry x:Name="EntryBank"
+                       Text=""
+                       WidthRequest="200"
+                       HeightRequest="60"
+                       HorizontalOptions="Center"
+                       Placeholder="$"/>
+
+                </Grid>
+                <Label
+                Text="Buying Price"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+                <Grid>
+                    <Entry x:Name="EntryBuyingPrice"
+                       Text=""
+                       WidthRequest="200"
+                       HeightRequest="60"
+                       HorizontalOptions="Center"
+                       Keyboard="Numeric"
+                       Placeholder="$"/>
+                </Grid>
+                <Label
+                Text="Stop Price"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+                <Grid>
+                    <Entry x:Name="EntryStopPrice"
+                       Text=""
+                       WidthRequest="200"
+                       HeightRequest="60"
+                       HorizontalOptions="Center"
+                       Keyboard="Numeric"
+                       Placeholder="$"/>
+
+                </Grid>
+                <Label
+                    Text="Loss Limit"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1"/>
+                <Grid>
+                    <Entry x:Name="EntryLossLimit"
+                         Text=""
+                           WidthRequest="200"
+                           HeightRequest="60"
+                           HorizontalOptions="Center"
+                           Keyboard="Numeric"
+                           Placeholder="%"/>
+                </Grid>
+                        <Grid>
+                            <Button Text="Calculate" Clicked="OnClickCalculate"/>
+                        </Grid>
+
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+                <Label
+                    Text="Stop"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1" />
+
+                <Grid>
+                    <Entry x:Name="EntryStopPercentage"
+                       Text=""
+                       WidthRequest="200"
+                       HeightRequest="60"
+                       HorizontalOptions="Center"
+                       IsReadOnly="True"
+                       Placeholder="Click on 'Calculate'"/>
+                </Grid>
+
+                <Label
+                        Text="Buying Capital"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level1"/>
+                <Grid>
+                    <Entry x:Name="EntryBuyingCapital"
+                           Text=""
+                           WidthRequest="200"
+                           HeightRequest="60"
+                           HorizontalOptions="Center"
+                           IsReadOnly="True"
+                           Placeholder="Click on 'Calculate'"/>
+                </Grid>
+                <Label
+                Text="Stocks"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+                <Grid>
+                    <Entry x:Name="EntryStocks"
+                       Text=""
+                       WidthRequest="200"
+                       HeightRequest="60"
+                       HorizontalOptions="Center"
+                       Keyboard="Numeric"
+                       IsReadOnly="True"
+                       Placeholder="Click on 'Calcuate'"/>
+
+                </Grid>
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+
+
+
+    </ScrollView>
+
+</ContentPage>
