@@ -8,7 +8,7 @@ namespace Stokalculator
 		decimal buyingPrice = 0;
 		decimal stopPrice = 0;
 		decimal stopDecimal = 0;
-		decimal userLoss = 0;
+		decimal lossLimit = 0;
 		decimal buyingFactor = 0;
 		decimal buyingCapital = 0;
 		decimal stocks = 0;
@@ -23,20 +23,15 @@ namespace Stokalculator
 
 		public void OnClickCalculate(object sender, EventArgs e)
 		{
-			totalCapital = decimal.Parse(EntryBank.Text);
-			buyingPrice = decimal.Parse(EntryBuyingPrice.Text);
-			stopPrice = decimal.Parse(EntryStopPrice.Text);
-			userLoss = decimal.Parse(EntryLossLimit.Text) / 100;
+			var inputTester = InputHandler();
 
-			if (stopPrice > buyingPrice)
+			if (inputTester == false)
 			{
-;				FormatAndPrint(0, 0, "0", false);
-				Error("Stop price has to be lower than buying price.");
 				return;
 			}
 
 			stopDecimal = ((stopPrice / buyingPrice) - 1) * -1;
-			buyingFactor = userLoss / stopDecimal;
+			buyingFactor = (lossLimit / 100) / stopDecimal;
 			buyingCapital = buyingFactor * totalCapital;
 
 			if (buyingCapital > totalCapital)
@@ -78,15 +73,51 @@ namespace Stokalculator
 			}
 		}
 
-		public void Error(string mensagem)
+		public bool InputHandler()
 		{
-			ErrorMessage.Text = mensagem;
-			ErrorMessage.IsVisible = true;
-			Device.StartTimer(TimeSpan.FromSeconds(3), () =>
+			decimal.TryParse(EntryTotalCapital.Text, out totalCapital);
+			decimal.TryParse(EntryBuyingPrice.Text, out buyingPrice);
+			decimal.TryParse(EntryStopPrice.Text, out stopPrice);
+			decimal.TryParse(EntryLossLimit.Text, out lossLimit);
+
+			List<decimal> inputs = new List<decimal>() { totalCapital, buyingPrice, stopPrice, lossLimit};
+			List<Entry> userEntries = new List<Entry>() { EntryTotalCapital, EntryBuyingPrice, EntryStopPrice, EntryLossLimit};
+			List<Entry> resultEntries = new List<Entry>() { EntryStopPercentage, EntryBuyingCapital, EntryStocks };
+
+			var result = true;
+
+			for (int i = 0; i < inputs.Count; i++)
 			{
-				ErrorMessage.IsVisible = false;
-				return false;
-			});
+				if (inputs[i] <= 0)
+				{
+					userEntries[i].BackgroundColor = Colors.LightPink;
+					result = false;
+				}
+				else
+				{
+					userEntries[i].BackgroundColor = Colors.White;
+				}
+
+			}
+
+			if (stopPrice > buyingPrice)
+			{
+				EntryStopPrice.BackgroundColor = Colors.LightPink;
+				EntryBuyingPrice.BackgroundColor = Colors.LightPink;
+				result = false;
+				//FALTA EXIBIR O ERRO
+			}
+
+			if (result == false)
+			{
+				for (int i = 0; i < resultEntries.Count; i++)
+				{
+					resultEntries[i].Text = "";
+				}
+			}
+
+			return result;
+
 		}
 
 

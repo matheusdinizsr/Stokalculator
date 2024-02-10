@@ -12,13 +12,13 @@
 
                 <Grid>
                     <Label
-                Text="Bank"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+                        Text="Total Capital"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level1" />
                 </Grid>
 
                 <Grid>
-                    <Entry x:Name="EntryBank"
+                    <Entry x:Name="EntryTotalCapital"
                        Text=""
                        WidthRequest="200"
                        HeightRequest="60"
@@ -27,9 +27,9 @@
 
                 </Grid>
                 <Label
-                Text="Buying Price"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+                    Text="Buying Price"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1" />
                 <Grid>
                     <Entry x:Name="EntryBuyingPrice"
                        Text=""
@@ -66,9 +66,9 @@
                            Keyboard="Numeric"
                            Placeholder="%"/>
                 </Grid>
-                        <Grid>
-                            <Button Text="Calculate" Clicked="OnClickCalculate"/>
-                        </Grid>
+                <Grid>
+                    <Button Text="Calculate" Clicked="OnClickCalculate"/>
+                </Grid>
 
 
             </VerticalStackLayout>
@@ -119,6 +119,11 @@
                        Placeholder="Click on 'Calcuate'"/>
 
                 </Grid>
+                <Label
+                Text=""
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                IsVisible="true"/>
             </VerticalStackLayout>
 
         </HorizontalStackLayout>
