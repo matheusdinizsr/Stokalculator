@@ -1,4 +1,6 @@
-﻿
+﻿using CommunityToolkit.Mvvm;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Stokalculator
 {
@@ -13,14 +15,14 @@ namespace Stokalculator
 		decimal buyingCapital = 0;
 		decimal stocks = 0;
 		bool allIn = false;
+		InvalidInputMessages _invalidInputMessages = new InvalidInputMessages();
 
 
 		public MainPage()
 		{
 			InitializeComponent();
+			collectionView.ItemsSource = _invalidInputMessages.BindedMessages;
 		}
-
-
 		public void OnClickCalculate(object sender, EventArgs e)
 		{
 			var inputTester = InputHandler();
@@ -56,8 +58,6 @@ namespace Stokalculator
 
 		}
 
-
-
 		public void FormatAndPrint(decimal stop, decimal capital, string stocks, bool allIn)
 		{
 			EntryStopPercentage.Text = String.Format("{0:0.00}", stop * 100) + " %";
@@ -80,9 +80,10 @@ namespace Stokalculator
 			decimal.TryParse(EntryStopPrice.Text, out stopPrice);
 			decimal.TryParse(EntryLossLimit.Text, out lossLimit);
 
-			List<decimal> inputs = new List<decimal>() { totalCapital, buyingPrice, stopPrice, lossLimit};
-			List<Entry> userEntries = new List<Entry>() { EntryTotalCapital, EntryBuyingPrice, EntryStopPrice, EntryLossLimit};
-			List<Entry> resultEntries = new List<Entry>() { EntryStopPercentage, EntryBuyingCapital, EntryStocks };
+			// Essas três listas abaixos estão sendo instanciadas a cada execução. Refatorar.
+			List<decimal> inputs = new () { totalCapital, buyingPrice, stopPrice, lossLimit };
+			List<Entry> userEntries = new () { EntryTotalCapital, EntryBuyingPrice, EntryStopPrice, EntryLossLimit };
+			List<Entry> resultEntries = new () { EntryStopPercentage, EntryBuyingCapital, EntryStocks };
 
 			var result = true;
 
@@ -91,21 +92,27 @@ namespace Stokalculator
 				if (inputs[i] <= 0)
 				{
 					userEntries[i].BackgroundColor = Colors.LightPink;
+					_invalidInputMessages.MessageHandler(i, "add");
 					result = false;
 				}
 				else
 				{
+					_invalidInputMessages.MessageHandler(i, "remove");
 					userEntries[i].BackgroundColor = Colors.White;
 				}
 
 			}
 
-			if (stopPrice > buyingPrice)
+			if (stopPrice >= buyingPrice)
 			{
-				EntryStopPrice.BackgroundColor = Colors.LightPink;
-				EntryBuyingPrice.BackgroundColor = Colors.LightPink;
+				userEntries[2].BackgroundColor = Colors.LightPink;
+				userEntries[1].BackgroundColor = Colors.LightPink;
+				_invalidInputMessages.MessageHandler(4, "add");
 				result = false;
-				//FALTA EXIBIR O ERRO
+			}
+			else
+			{
+				_invalidInputMessages.MessageHandler(4, "remove");
 			}
 
 			if (result == false)

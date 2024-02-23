@@ -1,4 +1,6 @@
-﻿namespace Stokalculator
+﻿using Stokalculator;
+
+namespace Stokalculator
 {
 	public partial class App : Application
 	{
