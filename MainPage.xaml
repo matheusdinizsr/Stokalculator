@@ -5,117 +5,122 @@
 			 x:Class="Stokalculator.MainPage"
 			 xmlns:local="clr-namespace:Stokalculator">
 
-	<ContentPage.BindingContext>
-		<local:InvalidInputMessages />
-	</ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <local:StringToIntConverter x:Key="StringToIntConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:InvalidInputMessages/>
+    </ContentPage.BindingContext>
 
 
-	<ScrollView>
-		<HorizontalStackLayout>
-			<VerticalStackLayout
-			Padding="30,0"
-			Spacing="25">
+    <ScrollView>
+        <HorizontalStackLayout>
+            <VerticalStackLayout
+			Padding="15"
+			Spacing="15">
 
-				<Grid>
-					<Label
+
+                <Grid>
+                    <Label
 						Text="Total Capital"
 						Style="{StaticResource Headline}"
 						SemanticProperties.HeadingLevel="Level1" />
-				</Grid>
+                </Grid>
 
-				<Grid>
-					<Entry x:Name="EntryTotalCapital"
-					   Text=""
+                <Grid>
+                    <Entry x:Name="EntryTotalCapital"
+					   Text="{Binding TotalCapitalConverter, Converter={StaticResource StringToIntConverter}}"
 					   WidthRequest="200"
 					   HeightRequest="60"
 					   HorizontalOptions="Center"
 					   Placeholder="$"/>
 
-				</Grid>
-				<Label
+                </Grid>
+                <Label
 					Text="Buying Price"
 					Style="{StaticResource Headline}"
 					SemanticProperties.HeadingLevel="Level1" />
-				<Grid>
-					<Entry x:Name="EntryBuyingPrice"
-					   Text=""
+                <Grid>
+                    <Entry x:Name="EntryBuyingPrice"
+					   Text="{Binding BuyingPriceConverter, Converter={StaticResource StringToIntConverter}}"
 					   WidthRequest="200"
 					   HeightRequest="60"
 					   HorizontalOptions="Center"
 					   Keyboard="Numeric"
 					   Placeholder="$"/>
-				</Grid>
-				<Label
-				Text="Stop Price"
-				Style="{StaticResource Headline}"
-				SemanticProperties.HeadingLevel="Level1" />
-				<Grid>
-					<Entry x:Name="EntryStopPrice"
-					   Text=""
+                </Grid>
+                <Label
+					Text="Stop Price"
+					Style="{StaticResource Headline}"
+					SemanticProperties.HeadingLevel="Level1" />
+                <Grid>
+                    <Entry x:Name="EntryStopPrice"
+					   Text="{Binding StopPriceConverter, Converter={StaticResource StringToIntConverter}}"
 					   WidthRequest="200"
 					   HeightRequest="60"
 					   HorizontalOptions="Center"
 					   Keyboard="Numeric"
 					   Placeholder="$"/>
 
-				</Grid>
-				<Label
+                </Grid>
+                <Label
 					Text="Loss Limit"
 					Style="{StaticResource Headline}"
 					SemanticProperties.HeadingLevel="Level1"/>
-				<Grid>
-					<Entry x:Name="EntryLossLimit"
-						 Text=""
-						   WidthRequest="200"
-						   HeightRequest="60"
-						   HorizontalOptions="Center"
-						   Keyboard="Numeric"
-						   Placeholder="%"/>
-				</Grid>
-				<Grid>
-					<Button Text="Calculate" Clicked="OnClickCalculate"/>
-				</Grid>
+                <Grid>
+                    <Entry x:Name="EntryLossLimit"
+					   Text="{Binding LossLimitConverter, Converter={StaticResource StringToIntConverter}}"
+					   WidthRequest="200"
+					   HeightRequest="60"
+					   HorizontalOptions="Center"
+					   Keyboard="Numeric"
+					   Placeholder="%"/>
+                </Grid>
+                <Grid>
+                    <Button Text="Calculate" Clicked="OnClickCalculate"/>
+                </Grid>
 
 
-			</VerticalStackLayout>
+            </VerticalStackLayout>
 
-			<VerticalStackLayout
-				Padding="30,0"
-				Spacing="25">
-				<Label
+            <VerticalStackLayout
+				Padding="15"
+				Spacing="15">
+                <Label
 					Text="Stop"
 					Style="{StaticResource Headline}"
 					SemanticProperties.HeadingLevel="Level1" />
 
-				<Grid>
-					<Entry x:Name="EntryStopPercentage"
+                <Grid>
+                    <Entry x:Name="EntryStopPercentage"
 					   Text=""
 					   WidthRequest="200"
 					   HeightRequest="60"
 					   HorizontalOptions="Center"
 					   IsReadOnly="True"
 					   Placeholder="Click on 'Calculate'"/>
-				</Grid>
+                </Grid>
 
-				<Label
+                <Label
 						Text="Buying Capital"
 						Style="{StaticResource Headline}"
 						SemanticProperties.HeadingLevel="Level1"/>
-				<Grid>
-					<Entry x:Name="EntryBuyingCapital"
+                <Grid>
+                    <Entry x:Name="EntryBuyingCapital"
 						   Text=""
 						   WidthRequest="200"
 						   HeightRequest="60"
 						   HorizontalOptions="Center"
 						   IsReadOnly="True"
 						   Placeholder="Click on 'Calculate'"/>
-				</Grid>
-				<Label
-				Text="Stocks"
-				Style="{StaticResource Headline}"
-				SemanticProperties.HeadingLevel="Level1" />
-				<Grid>
-					<Entry x:Name="EntryStocks"
+                </Grid>
+                <Label
+					Text="Stocks"
+					Style="{StaticResource Headline}"
+					SemanticProperties.HeadingLevel="Level1" />
+                <Grid>
+                    <Entry x:Name="EntryStocks"
 					   Text=""
 					   WidthRequest="200"
 					   HeightRequest="60"
@@ -124,25 +129,28 @@
 					   IsReadOnly="True"
 					   Placeholder="Click on 'Calcuate'"/>
 
-				</Grid>
-				<Grid>
-					<CollectionView x:Name="collectionView" ItemsSource="{Binding BindedMessages}">
-						<CollectionView.ItemTemplate>
-							<DataTemplate>
-								<Grid>
-									<Label x:Name="LabelErrors" Text="{Binding}"/>
-								</Grid>
-							</DataTemplate>
-						</CollectionView.ItemTemplate>
-					</CollectionView>
-				</Grid>
+                </Grid>
+                <Grid>
+                    <CollectionView x:Name= "InvalidMessagesInPage" ItemsSource="{Binding InvalidInputMessages.BindedMessages}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Label x:Name="LabelErrors" BackgroundColor="AliceBlue" Text="{Binding}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
 
-			</VerticalStackLayout>
+            </VerticalStackLayout>
 
-		</HorizontalStackLayout>
+            
+
+
+        </HorizontalStackLayout>
 
 
 
-	</ScrollView>
+    </ScrollView>
 
 </ContentPage>

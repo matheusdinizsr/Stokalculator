@@ -1,5 +1,4 @@
-﻿//using Javax.Xml.Transform;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Stokalculator
@@ -15,9 +14,9 @@ namespace Stokalculator
 			"Loss limit can't be 0 or blank.", // [3]
 			"Buying price has to be higher than stop price." // [4]
 		};
-		public void MessageHandler(int index, string command) // Ao invés de string, posso fazer boolean e passar o "result"
+		public void MessageHandler(int index, bool command)
 		{
-			if (command == "add")
+			if (command == false)
 			{
 				if (BindedMessages.Contains(_messageList[index]))
 				{
@@ -27,7 +26,7 @@ namespace Stokalculator
 				BindedMessages.Add(_messageList[index]);
 			}
 
-			if (command == "remove")
+			if (command == true)
 			{
 				if (BindedMessages.Contains(_messageList[index]))
 				{
