@@ -145,13 +145,13 @@ namespace Stokalculator
 			if (stopPrice >= buyingPrice)
 			{
 				result = false;
-				userEntries[2].BackgroundColor = Colors.LightPink;
 				userEntries[1].BackgroundColor = Colors.LightPink;
+				userEntries[2].BackgroundColor = Colors.LightPink;
 				InvalidInputMessages.MessageHandler(4, result);
 			}
 			else
 			{
-				InvalidInputMessages.MessageHandler(4, result);
+				InvalidInputMessages.MessageHandler(4, true);
 			}
 
 			if (result == false)

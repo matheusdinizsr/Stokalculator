@@ -15,141 +15,141 @@
 
 
     <ScrollView>
-        <HorizontalStackLayout>
-            <VerticalStackLayout
-			Padding="15"
-			Spacing="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
+            <Label
+				Text="Total Capital"
+				Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+				Grid.Row="0" Grid.Column="0"/>
 
-                <Grid>
-                    <Label
-						Text="Total Capital"
-						Style="{StaticResource Headline}"
-						SemanticProperties.HeadingLevel="Level1" />
-                </Grid>
+            <Entry x:Name="EntryTotalCapital"
+				   Text="{Binding TotalCapitalConverter, Converter={StaticResource StringToIntConverter}}"
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   Placeholder="$"
+				   Grid.Row="0" Grid.Column="0"/>
 
-                <Grid>
-                    <Entry x:Name="EntryTotalCapital"
-					   Text="{Binding TotalCapitalConverter, Converter={StaticResource StringToIntConverter}}"
-					   WidthRequest="200"
-					   HeightRequest="60"
-					   HorizontalOptions="Center"
-					   Placeholder="$"/>
+            <Label
+				Text="Buying Price"
+				Style="{StaticResource Headline}"
+				SemanticProperties.HeadingLevel="Level1" 
+                Grid.Row="1" Grid.Column="0"/>
 
-                </Grid>
-                <Label
-					Text="Buying Price"
-					Style="{StaticResource Headline}"
-					SemanticProperties.HeadingLevel="Level1" />
-                <Grid>
-                    <Entry x:Name="EntryBuyingPrice"
-					   Text="{Binding BuyingPriceConverter, Converter={StaticResource StringToIntConverter}}"
-					   WidthRequest="200"
-					   HeightRequest="60"
-					   HorizontalOptions="Center"
-					   Keyboard="Numeric"
-					   Placeholder="$"/>
-                </Grid>
-                <Label
-					Text="Stop Price"
-					Style="{StaticResource Headline}"
-					SemanticProperties.HeadingLevel="Level1" />
-                <Grid>
-                    <Entry x:Name="EntryStopPrice"
-					   Text="{Binding StopPriceConverter, Converter={StaticResource StringToIntConverter}}"
-					   WidthRequest="200"
-					   HeightRequest="60"
-					   HorizontalOptions="Center"
-					   Keyboard="Numeric"
-					   Placeholder="$"/>
+            <Entry x:Name="EntryBuyingPrice"
+				   Text="{Binding BuyingPriceConverter, Converter={StaticResource StringToIntConverter}}"
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   Keyboard="Numeric"
+				   Placeholder="$"
+                   Grid.Row="1" Grid.Column="0"/>
 
-                </Grid>
-                <Label
-					Text="Loss Limit"
-					Style="{StaticResource Headline}"
-					SemanticProperties.HeadingLevel="Level1"/>
-                <Grid>
-                    <Entry x:Name="EntryLossLimit"
-					   Text="{Binding LossLimitConverter, Converter={StaticResource StringToIntConverter}}"
-					   WidthRequest="200"
-					   HeightRequest="60"
-					   HorizontalOptions="Center"
-					   Keyboard="Numeric"
-					   Placeholder="%"/>
-                </Grid>
-                <Grid>
-                    <Button Text="Calculate" Clicked="OnClickCalculate"/>
-                </Grid>
+            <Label
+				Text="Stop Price"
+				Style="{StaticResource Headline}"
+				SemanticProperties.HeadingLevel="Level1"
+                  Grid.Row="2" Grid.Column="0"/>
 
+            <Entry x:Name="EntryStopPrice"
+				   Text="{Binding StopPriceConverter, Converter={StaticResource StringToIntConverter}}"
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   Keyboard="Numeric"
+				   Placeholder="$"
+                   Grid.Row="2" Grid.Column="0"/>
 
-            </VerticalStackLayout>
-
-            <VerticalStackLayout
-				Padding="15"
-				Spacing="15">
-                <Label
-					Text="Stop"
-					Style="{StaticResource Headline}"
-					SemanticProperties.HeadingLevel="Level1" />
-
-                <Grid>
-                    <Entry x:Name="EntryStopPercentage"
-					   Text=""
-					   WidthRequest="200"
-					   HeightRequest="60"
-					   HorizontalOptions="Center"
-					   IsReadOnly="True"
-					   Placeholder="Click on 'Calculate'"/>
-                </Grid>
-
-                <Label
-						Text="Buying Capital"
-						Style="{StaticResource Headline}"
-						SemanticProperties.HeadingLevel="Level1"/>
-                <Grid>
-                    <Entry x:Name="EntryBuyingCapital"
-						   Text=""
-						   WidthRequest="200"
-						   HeightRequest="60"
-						   HorizontalOptions="Center"
-						   IsReadOnly="True"
-						   Placeholder="Click on 'Calculate'"/>
-                </Grid>
-                <Label
-					Text="Stocks"
-					Style="{StaticResource Headline}"
-					SemanticProperties.HeadingLevel="Level1" />
-                <Grid>
-                    <Entry x:Name="EntryStocks"
-					   Text=""
-					   WidthRequest="200"
-					   HeightRequest="60"
-					   HorizontalOptions="Center"
-					   Keyboard="Numeric"
-					   IsReadOnly="True"
-					   Placeholder="Click on 'Calcuate'"/>
-
-                </Grid>
-                <Grid>
-                    <CollectionView x:Name= "InvalidMessagesInPage" ItemsSource="{Binding InvalidInputMessages.BindedMessages}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Label x:Name="LabelErrors" BackgroundColor="AliceBlue" Text="{Binding}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </Grid>
-
-            </VerticalStackLayout>
-
+            <Label
+				Text="Loss Limit"
+				Style="{StaticResource Headline}"
+				SemanticProperties.HeadingLevel="Level1"
+                Grid.Row="3" Grid.Column="0"/>
             
+            <Entry x:Name="EntryLossLimit"
+				   Text="{Binding LossLimitConverter, Converter={StaticResource StringToIntConverter}}"
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   Keyboard="Numeric"
+				   Placeholder="%"
+                   Grid.Row="3" Grid.Column="0"/>
+            
+            <Button Text="Calculate" Clicked="OnClickCalculate"
+                    Grid.Row="4" Grid.Column="0"/>
+
+            <Label
+				Text="Stop"
+				Style="{StaticResource Headline}"
+				SemanticProperties.HeadingLevel="Level1"
+                Grid.Row="0" Grid.Column="1"/>
+
+            <Entry x:Name="EntryStopPercentage"
+				   Text=""
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   IsReadOnly="True"
+				   Placeholder="Click on 'Calculate'"
+                   Grid.Row="0" Grid.Column="1"/>
+
+            <Label
+				Text="Buying Capital"
+				Style="{StaticResource Headline}"
+				SemanticProperties.HeadingLevel="Level1"
+                Grid.Row="1" Grid.Column="1"/>
+
+            <Entry x:Name="EntryBuyingCapital"
+				   Text=""
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   IsReadOnly="True"
+				   Placeholder="Click on 'Calculate'"
+                   Grid.Row="1" Grid.Column="1"/>
+
+            <Label
+				Text="Stocks"
+				Style="{StaticResource Headline}"
+				SemanticProperties.HeadingLevel="Level1"
+                Grid.Row="2" Grid.Column="1"/>
+
+            <Entry x:Name="EntryStocks"
+				   Text=""
+				   WidthRequest="200"
+				   HeightRequest="60"
+				   HorizontalOptions="Center"
+				   Keyboard="Numeric"
+				   IsReadOnly="True"
+				   Placeholder="Click on 'Calcuate'"
+                   Grid.Row="2" Grid.Column="1"/>
+
+            <CollectionView
+                x:Name= "InvalidMessagesInPage"
+                ItemsSource="{Binding InvalidInputMessages.BindedMessages}"
+                Grid.Row="3" Grid.Column="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label x:Name="LabelErrors" BackgroundColor="AliceBlue" Text="{Binding}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
-        </HorizontalStackLayout>
-
-
+        </Grid>
 
     </ScrollView>
 
