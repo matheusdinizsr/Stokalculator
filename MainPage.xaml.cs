@@ -136,7 +136,7 @@ namespace Stokalculator
 				}
 				else
 				{
-					InvalidInputMessages.MessageHandler(i, result);
+					InvalidInputMessages.MessageHandler(i, true);
 					userEntries[i].BackgroundColor = Colors.White;
 				}
 
