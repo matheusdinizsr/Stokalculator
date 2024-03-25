@@ -7,7 +7,7 @@ A aplicação foi feita para facilitar a vida dos traders, que muitas vezes deve
 - **Back-end**: C#.
 
 ## Demonstração
-
+https://imgur.com/tFwBUM8
 
 ## Funcionalidades
 - Cálculo de "stop"
@@ -31,7 +31,7 @@ Quanto a **exibição das mensagens**, tive dificuldade porque minha ideia inici
 Para não permitir a **inserção de letras**, de início, havia utilizado o método **TryParse**. Com isso, conseguia eliminar as _exceptions_, mas ainda assim o usuário conseguia digitar os caracteres. Foi então que descobri a utilização dos **converters**, fazendo com que as letras fossem automaticamente removidas das entradas.
 
 ## E agora?
-A ideia dessa aplicação era ser um projeto de estudo, mas no decorrer do desenvolvimento, percebi que ele tem potencial para ser um sistema muito maior. Por isso, decidi desenvolvê-lo novamente como aplicação web, utilizando **Blazor**.
+A ideia dessa aplicação era ser um projeto de estudo, mas no decorrer do desenvolvimento, percebi que ele tem potencial para ser um sistema muito maior. Por isso, decidi desenvolvê-lo novamente como **aplicação web**, utilizando **Blazor**.
 Pretendo acrescentar as seguintes funções:
 
 - Login com usuário e senha
