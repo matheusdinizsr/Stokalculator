@@ -1,6 +1,7 @@
 ﻿using AndreasReitberger.Shared.Hosting;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace Stokalculator
 {
@@ -18,7 +19,34 @@ namespace Stokalculator
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				})
 				.InitializeSharedMauiStyles();
-				
+
+#if WINDOWS
+			builder.ConfigureLifecycleEvents(events =>
+			{
+				// Make sure to add "using Microsoft.Maui.LifecycleEvents;" in the top of the file
+				events.AddWindows(windowsLifecycleBuilder =>
+				{
+					windowsLifecycleBuilder.OnWindowCreated(window =>
+					{
+						window.ExtendsContentIntoTitleBar = false;
+						var handle = WinRT.Interop.WindowNative.GetWindowHandle(window);
+						var id = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(handle);
+						var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(id);
+
+						switch (appWindow.Presenter)
+						{
+							case Microsoft.UI.Windowing.OverlappedPresenter overlappedPresenter:
+								//disable the max button
+								overlappedPresenter.IsMaximizable = false;
+								break;
+						}
+
+						
+					});
+				});
+			});
+#endif
+
 
 
 #if DEBUG

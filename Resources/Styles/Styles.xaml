@@ -149,6 +149,7 @@
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Placeholder" Value="$"/>
+        <Setter Property="CursorPosition" Value="1"/>
     </Style>
 
     <Style TargetType="Entry" x:Key="SystemEntries">
