@@ -72,11 +72,11 @@
             <Label Text="Stop" Style="{StaticResource SubHeadline}"
 				Grid.Row="0" Grid.Column="1"/>
 
-            <Label Text="$" Style="{StaticResource Indentifiers}"
+            <Label Text="%" Style="{StaticResource Indentifiers}"
                 Grid.Row="1" Grid.Column="1"/>
 
             <Entry x:Name="EntryStopPercentage"
-				   Style="{StaticResource UserEntries}"
+				   Style="{StaticResource SystemEntries}"
 				   Grid.Row="1" Grid.Column="1"/>
 
             <Label Text="Buying Capital" Style="{StaticResource SubHeadline}"
@@ -86,14 +86,14 @@
                 Grid.Row="4" Grid.Column="1"/>
 
             <Entry x:Name="EntryBuyingCapital"
-				   Style="{StaticResource UserEntries}"
+				   Style="{StaticResource SystemEntries}"
 				   Grid.Row="4" Grid.Column="1"/>
 
             <Label Text="Stocks" Style="{StaticResource SubHeadline}"
 				Grid.Row="6" Grid.Column="1"/>
 
             <Entry x:Name="EntryStocks"
-				   Style="{StaticResource UserEntries}"
+				   Style="{StaticResource SystemEntries}"
 				   Grid.Row="7" Grid.Column="1"/>
 
             <CollectionView

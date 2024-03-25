@@ -18,6 +18,7 @@ namespace Stokalculator
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				})
 				.InitializeSharedMauiStyles();
+				
 
 
 #if DEBUG

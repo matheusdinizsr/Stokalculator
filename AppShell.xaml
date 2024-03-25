@@ -8,7 +8,7 @@
     Title="Stokalculator">
 
     <ShellContent
-        Title="Stokalculator"
+        Title=""
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

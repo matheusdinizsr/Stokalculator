@@ -168,16 +168,16 @@ namespace Stokalculator
 
 		public void FormatAndPrint(decimal stop, decimal capital, string stocks, bool allIn)
 		{
-			EntryStopPercentage.Text = String.Format("{0:0.00}", stop * 100) + " %";
+			EntryStopPercentage.Text = String.Format("{0:0.00}", stop * 100);
 			EntryStocks.Text = stocks;
 
 			if (allIn)
 			{
-				EntryBuyingCapital.Text = "$ " + String.Format("{0:0.00}", capital) + " - All In!";
+				EntryBuyingCapital.Text = String.Format("{0:0.00}", capital) + " - All In!";
 			}
 			else
 			{
-				EntryBuyingCapital.Text = "$ " + String.Format("{0:0.00}", capital);
+				EntryBuyingCapital.Text = String.Format("{0:0.00}", capital);
 			}
 		}
 
