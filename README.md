@@ -7,7 +7,7 @@ The application was designed to ease the traders1 lives, who often need to make 
 - **Front-end**:  Xaml, Maui.
 - **Back-end**: C#.
 
-## Demon
+## Demo
 https://imgur.com/tFwBUM8
 
 ## Features
