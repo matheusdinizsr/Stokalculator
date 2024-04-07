@@ -32,15 +32,6 @@ Regarding **displaying the messages**, I had a hard time because my initial idea
 To prevent input of letters, initially, I used the TryParse method. While this was correctly handling exceptions, users could still input characters. That's when I found about the use of converters, which automatically removed letters from the inputs.
 
 ## What's next?
-A ideia dessa aplicação era ser um projeto de estudo, mas no decorrer do desenvolvimento, percebi que ele tem potencial para ser um sistema muito maior. Por isso, decidi desenvolvê-lo novamente como **aplicação web**, utilizando **Blazor**.
-Pretendo acrescentar as seguintes funções:
-
-- Login com usuário e senha
-- Banco de dados
-- Histórico com operações de trading
-- Gerenciamento de carteiras de capital
-- Temas claro e escuro
-
 This project was initially made for study purposes, but as development progressed, I realized it had the potential to become a much more complete system. Therefore, I decided to rebuild it as a web application using **Blazor**.
 
 I plan to add the following features:
