@@ -68,8 +68,8 @@ namespace Stokalculator
 		decimal stocks = 0;
 		bool allIn = false;
 
-		// Properties
-		public InvalidInputMessages InvalidInputMessages = new InvalidInputMessages();
+        // Properties
+        public InvalidInputMessages InvalidInputMessages = new();
 
 
 		public MainPage()
@@ -115,14 +115,14 @@ namespace Stokalculator
 
 		public bool InputHandler()
 		{
-			decimal.TryParse(EntryTotalCapital.Text, out totalCapital);
-			decimal.TryParse(EntryBuyingPrice.Text, out buyingPrice);
-			decimal.TryParse(EntryStopPrice.Text, out stopPrice);
-			decimal.TryParse(EntryLossLimit.Text, out lossLimit);
+            _ = decimal.TryParse(EntryTotalCapital.Text, out totalCapital);
+            _ = decimal.TryParse(EntryBuyingPrice.Text, out buyingPrice);
+            _ = decimal.TryParse(EntryStopPrice.Text, out stopPrice);
+            _ = decimal.TryParse(EntryLossLimit.Text, out lossLimit);
 
-			List<decimal> inputs = new() { totalCapital, buyingPrice, stopPrice, lossLimit };
-			List<Entry> userEntries = new() { EntryTotalCapital, EntryBuyingPrice, EntryStopPrice, EntryLossLimit };
-			List<Entry> resultEntries = new() { EntryStopPercentage, EntryBuyingCapital, EntryStocks };
+			List<decimal> inputs = [totalCapital, buyingPrice, stopPrice, lossLimit];
+			List<Entry> userEntries = [EntryTotalCapital, EntryBuyingPrice, EntryStopPrice, EntryLossLimit];
+			List<Entry> resultEntries = [EntryStopPercentage, EntryBuyingCapital, EntryStocks];
 
 			var result = true;
 
